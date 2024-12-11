@@ -170,7 +170,7 @@ def borrar_mascota(id):
     sql2= f'''
 
         DELETE FROM Mascota
-        WHERE nombre = {id}
+        WHERE ID = {id}
 
     '''
 
