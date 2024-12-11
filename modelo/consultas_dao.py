@@ -121,12 +121,12 @@ def listar_genero():
   listar_generos = []
 
   sql = '''
-      SELECT Nombre FROM Genero
+      SELECT * FROM Genero
   '''
 
   try:
       conn.cursor.execute(sql)
-      listar_generos = [nombre[0] for nombre in conn.cursor.fetchall()]  # Obtener solo el nombre
+      listar_generos =  conn.cursor.fetchall()  # Obtener solo el nombre
       conn.cerrar_con()
       return listar_generos
 
@@ -167,9 +167,17 @@ def borrar_mascota(id):
         WHERE ID = {id}
     
 '''
+    sql2= f'''
+
+        DELETE FROM Mascota
+        WHERE nombre = {id}
+
+    '''
+
     try:
         cursor = conn.cursor
         cursor.execute(sql)
+        cursor.execute(sql2)
         conn.cerrar_con()
         messagebox.showinfo('Base de datos', 'Datos actualizados con éxito')
     except Exception as e:

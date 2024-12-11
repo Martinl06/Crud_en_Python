@@ -1,3 +1,4 @@
+
 import tkinter as tk
 from tkinter import ttk
 from modelo.consultas_dao import Veterinaria, crear_tabla, editar_datos, guardar_datos, listar_datos,listar_genero, borrar_mascota
@@ -8,7 +9,9 @@ class Frame(tk.Frame):
         self.root = root
         self.id_Mascota = None   
         self.pack()    
-        #self.config(bg='green')
+        self.config(bg='black')
+        
+
 
         self.label_form()
         self.input_form()
@@ -19,45 +22,40 @@ class Frame(tk.Frame):
     
 
     def label_form(self):    
-        #self.label_nombre = tk.Label(self, text="Mascota: ")    
-        #self.label_nombre.config(font=('Arial',12,'bold'))    
-        #self.label_nombre.grid(row= 0, column=0,padx=10,pady=10)
-        self.label_nombre = tk.Label(self, text="Dueño: ")    
+        
+        self.label_nombre = tk.Label(self,bg="black",fg="white", text="Dueño: ")    
         self.label_nombre.config(font=('Arial',12,'bold'))    
         self.label_nombre.grid(row= 0, column=0,padx=10,pady=10)
-        self.label_nombre = tk.Label(self, text="Nombre: ")    
+        self.label_nombre = tk.Label(self,bg="black",fg="white",text="Nombre: ")    
         self.label_nombre.config(font=('Arial',12,'bold'))    
         self.label_nombre.grid(row= 1, column=0,padx=10,pady=10)
-        self.label_nombre = tk.Label(self, text="Edad: ")    
+        self.label_nombre = tk.Label(self,bg="black",fg="white", text="Edad: ")    
         self.label_nombre.config(font=('Arial',12,'bold'))    
         self.label_nombre.grid(row= 2, column=0,padx=10,pady=10)    
-        self.label_nombre = tk.Label(self, text="Genero: ")    
+        self.label_nombre = tk.Label(self,bg="black",fg="white", text="Genero: ")    
         self.label_nombre.config(font=('Arial',12,'bold'))    
         self.label_nombre.grid(row= 3, column=0,padx=10,pady=10)
-        self.label_nombre = tk.Label(self, text="Raza: ")    
+        self.label_nombre = tk.Label(self,bg="black", fg="white",text="Raza: ")    
         self.label_nombre.config(font=('Arial',12,'bold'))    
         self.label_nombre.grid(row= 4, column=0,padx=10,pady=10)
         
     
     def input_form(self):
-        #self.mascota = tk.StringVar()    
-        #self.entry_mascota = tk.Entry(self, textvariable=self.mascota)    
-        #self.entry_mascota.config(width=50)    
-        #self.entry_mascota.grid(row= 0, column=2,padx=10,pady=10)    
+           
 
         self.nombre = tk.StringVar()    
         self.entry_nombre = tk.Entry(self, textvariable=self.nombre)    
-        self.entry_nombre.config(width=50)    
+        self.entry_nombre.config(width=80)    
         self.entry_nombre.grid(row= 1, column=2,padx=10,pady=10) 
 
         self.dueño = tk.StringVar()    
         self.entry_dueño = tk.Entry(self, textvariable=self.dueño)    
-        self.entry_dueño.config(width=50)    
+        self.entry_dueño.config(width=80)    
         self.entry_dueño.grid(row= 0, column=2,padx=10,pady=10)   
         
         self.edad = tk.StringVar()
         self.entry_edad = tk.Entry(self, textvariable=self.edad)    
-        self.entry_edad.config(width=50)    
+        self.entry_edad.config(width=80)    
         self.entry_edad.grid(row= 2, column=2,padx=10,pady=10) 
         
         x = listar_genero()
@@ -76,7 +74,7 @@ class Frame(tk.Frame):
 
         self.raza = tk.StringVar()
         self.entry_raza = tk.Entry(self, textvariable=self.raza)    
-        self.entry_raza.config(width=50)    
+        self.entry_raza.config(width=80)    
         self.entry_raza.grid(row= 4, column=2,padx=10,pady=10) 
     
     def botones_principales(self):    
@@ -94,7 +92,6 @@ class Frame(tk.Frame):
     
     def guardar_Campos(self):
         veterinaria = Veterinaria(
-            #self.mascota.get(),
             self.nombre.get(),
             self.dueño.get(),
             self.edad.get(),
@@ -115,8 +112,7 @@ class Frame(tk.Frame):
 
     
         
-    def habilitar_campos(self):
-        #self.entry_mascota.config(state='normal')    
+    def habilitar_campos(self):    
         self.entry_nombre.config(state='normal')
         self.entry_dueño.config(state='normal')    
         self.entry_edad.config(state='normal')    
@@ -126,8 +122,7 @@ class Frame(tk.Frame):
         self.btn_cance.config(state='normal')    
         self.btn_alta.config(state='disabled')
 
-    def bloquear_campos(self):
-        #self.entry_mascota.config(state='disabled')    
+    def bloquear_campos(self):    
         self.entry_nombre.config(state='disabled')
         self.entry_dueño.config(state='disabled')    
         self.entry_edad.config(state='disabled')    
@@ -136,7 +131,6 @@ class Frame(tk.Frame):
         self.btn_modi.config(state='disabled')    
         self.btn_cance.config(state='disabled')    
         self.btn_alta.config(state='normal')
-        #self.mascota.set('')
         self.nombre.set('')
         self.dueño.set('')
         self.edad.set('')
@@ -194,7 +188,7 @@ class Frame(tk.Frame):
             self.entry_genero.current(0)
 
     
-        #self.mascota.set(self.tabla.item(self.tabla.selection())['values'][0])
+        
         self.nombre.set(self.tabla.item(self.tabla.selection())['values'][1])
         self.dueño.set(self.tabla.item(self.tabla.selection())['values'][0])
         self.edad.set(self.tabla.item(self.tabla.selection())['values'][2])
